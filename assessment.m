@@ -14,12 +14,14 @@ for i=1:476
     pingjia(j,k)=sum(1-exp(-((pollution2(i,2:4)-alpha(2:4)')./thigama(2:4)').^2));
 end
 bianyixishu=std(pingjia,0,2) ./mean(pingjia,2);
-for i=1:17
+bianyixishu=bianyixishu./sum(bianyixishu);
+for i=1:17%每个地区的评价
     zonghepingjia(i)=sum(pingjia(:,i).*bianyixishu);
 end
-zonghepingjia=zonghepingjia';%每个地区的评价
+
 
 bianyixishu2=std(pingjia)./mean(pingjia);
+bianyixishu2=bianyixishu2./sum(bianyixishu2);
 for i=1:28
     zonghepingjia2(i)=sum(pingjia(i,:).*bianyixishu2);
 end
